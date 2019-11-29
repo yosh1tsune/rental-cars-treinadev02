@@ -1,9 +1,9 @@
 <h1>Filias</h1><br><br>
 
-<% @subsidiaries.each do |s| %>
-    <h1><%= link_to s.name, subsidiary_path(s.id) %></h1><br><br>
-    <p><%= s.cnpj %></p><br>
-    <p><%= s.address %></p><br>
+<% @subsidiaries.each do |subsidiary| %>
+    <h3><%= link_to subsidiary.name, subsidiary_path(subsidiary.id) %></h3><br><br>
+    <%# Caso o parametro passado seja um objeto, não e necessário enviar o id >subsidiary_path(subsidiary)< %>
+    <%# As rotas padrão do rails aceitam o caminho sem o 'path' >subsidiary< %>
 <% end %>
 
 <%= link_to 'Voltar', root_path %>

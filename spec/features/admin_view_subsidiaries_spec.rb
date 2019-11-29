@@ -6,8 +6,11 @@ feature 'Admin view subsidiaries' do
 
     visit root_path
     click_on 'Filiais'
+    click_on 'São Paulo'
 
     expect(page).to have_content('São Paulo')
+    expect(page).to have_content('12.345.678/9999-00')
+    expect(page).to have_content('Alameda Santos, 1293')
     expect(page).to have_link('Voltar')
   end
 end

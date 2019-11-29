@@ -6,6 +6,7 @@ feature 'Admin view car categories' do
 
     visit root_path
     click_on 'Categorias de veículos'
+    click_on 'Sedan'
 
     expect(page).to have_content('Sedan')
     expect(page).to have_link('Voltar')
