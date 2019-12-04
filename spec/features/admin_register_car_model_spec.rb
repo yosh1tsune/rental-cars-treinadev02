@@ -20,9 +20,10 @@ feature 'Admin register car model' do
 
         click_on 'Enviar'
 
+        expect(page).to have_content('Modelo registrado com sucesso')
         expect(page).to have_content('Onix')
-        expect(page).to have_content('2020')
-        expect(page).to have_content('1.0')
-        expect(page).to have_content('Flex')
+        expect(page).to have_content('Ano: 2020')
+        expect(page).to have_content('Motor: 1.0')
+        expect(page).to have_content('Combustível: Flex')
     end
 end

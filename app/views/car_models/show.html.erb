@@ -1,0 +1,14 @@
+<h1><%= @car_model.name %></h1>
+
+<dl>
+    <dt>Ano:</dt>
+    <dd><%= @car_model.year %></dd>
+    <dt>Motor:</dt>
+    <dd><%= @car_model.motorization %></dd>
+    <dt>Combustível:</dt>
+    <dd><%= @car_model.fuel_type %></dd>
+    <dt>Fabricante:</dt>
+    <dd><%= @car_model.manufacturer.name %></dd>
+    <dt>Categoria:</dt>
+    <dd><%= @car_model.car_category.name %></dd>
+</dl>
