@@ -1,0 +1,27 @@
+<h1>Registrar novo cliente</h1>
+
+<% if @client.errors.any? %>
+  <p>Você deve corrigir os seguintes erros: </p>
+  <ul>
+  <% @client.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  <% end %>
+  </ul><br><br>
+<% end %>
+
+<%= form_with model: @client, local: true do |form| %>
+    <p>
+        <%= form.label :name, 'Nome'%>
+        <%= form.text_field :name %>
+    </p>
+    <p>
+        <%= form.label :cpf, 'CPF'%>
+        <%= form.text_field :cpf %>
+    </p>
+    <p>
+        <%= form.label :email, 'Email'%>
+        <%= form.text_field :email %>
+    </p>
+
+    <%= form.submit 'Enviar' %>
+<% end %>

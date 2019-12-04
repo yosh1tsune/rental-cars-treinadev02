@@ -1,5 +1,7 @@
 <h1>Filias</h1><br><br>
 
+<%= link_to 'Registrar nova filial', new_subsidiary_path %>
+
 <% @subsidiaries.each do |subsidiary| %>
     <h3><%= link_to subsidiary.name, subsidiary_path(subsidiary.id) %></h3><br><br>
     <%# Caso o parametro passado seja um objeto, não e necessário enviar o id >subsidiary_path(subsidiary)< %>

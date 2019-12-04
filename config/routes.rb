@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  resources :manufacturers #, only: [:index, :show...] Preferível usar whitelist
+  resources :manufacturers, only: [:index, :show, :new, :create, :edit, :update]
 
-  resources :subsidiaries #, except [:destroy, :update...] Ao invés de blacklist
+  resources :subsidiaries, only: [:index, :show, :new, :create, :edit, :update]
 
-  resources :car_categories
+  resources :car_categories, only: [:index, :show, :new, :create, :edit, :update]
+
+  resources :clients, only: [:index, :show, :new, :create, :edit, :update]
 end

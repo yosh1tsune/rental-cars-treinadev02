@@ -1,4 +1,4 @@
-<h1>Registrar novo fabricante</h1>
+<h1>Editar fabricante</h1>
 
 <% if @manufacturer.errors.any? %>
   <p>Você deve corrigir os seguintes erros: </p>
@@ -19,11 +19,3 @@
     <%= form.submit 'Enviar' %>
   </p>
 <% end %>
-
-<%= link_to 'Voltar', manufacturers_path %>
-
-<%#= form_for @manufacturer do |f| %>
-  <%#= f.label :name, 'Nome' %>
-  <%#= f.text_field :name %>
-  <%#= f.submit 'Enviar' %>
-<%# end %>

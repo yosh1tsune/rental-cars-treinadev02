@@ -1,7 +1,15 @@
 <h1><%= @subsidiary.name %></h1><br><br>
 
-<p><%= @subsidiary.cnpj %></p><br><br>
+<p>
+    <%= link_to 'Editar', edit_subsidiary_path %><br><br>
+</p>
 
-<p><%= @subsidiary.address %></p><br><br>
+<p>
+    <span>CNPJ: </span><%= @subsidiary.cnpj %><br><br>
+</p>
+
+<p>
+    <span>Endereço: </span><%= @subsidiary.address %><br><br>
+</p>
 
 <%= link_to 'Voltar', root_path %>

@@ -1,3 +1,15 @@
-<%= @car_category.name %>
+<h1>
+    <%= @car_category.name %><br><br>
+</h1>
+
+<p>
+    <%= link_to 'Editar', edit_car_category_path %>
+</p>
+
+<ul>
+    <li><span>Diária: R$ <%= @car_category.daily_rate %></span>
+    <li><span>Seguro: R$ <%= @car_category.car_insurance %></span>
+    <li><span>Seguro contra terceiros: R$ <%= @car_category.third_party_insurance %></span>
+</ul>
 
 <%= link_to 'Voltar', root_path %>
