@@ -21,7 +21,6 @@ class CarModelsController < ApplicationController
         else
             @manufacturers = Manufacturer.all
             @car_categories = CarCategory.all
-            flash.now[:alert] = 'Erro'
             render :new
         end
     end
