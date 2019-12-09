@@ -1,19 +1,21 @@
 class ManufacturersController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_manufacturer, only: [:show, :edit, :update]
+
     def index
         @manufacturers = Manufacturer.all
         @car_models = CarModel.all
     end
 
     def show
-        @manufacturer = Manufacturer.find(params[:id])
     end
 
     def new
         @manufacturer = Manufacturer.new
     end
 
-    def edit
-        @manufacturer = Manufacturer.find(params[:id])    
+    def edit 
     end
 
     def create
@@ -28,7 +30,6 @@ class ManufacturersController < ApplicationController
     end
 
     def update
-        @manufacturer = Manufacturer.find(params[:id])
         if @manufacturer.update(manufacturer_params)
             flash[:notice] = 'Fabricante atualizado com sucesso!'
             redirect_to @manufacturer
@@ -38,6 +39,17 @@ class ManufacturersController < ApplicationController
     end
 
     private
+
+    def authorize_admin
+        unless current_user.admin?
+            flash[:notice] = 'Você não tem essa autorização'
+            redirect_to root_path
+        end
+    end
+
+    def set_manufacturer
+        @manufacturer = Manufacturer.find(params[:id])
+    end
 
     def manufacturer_params
         params.require(:manufacturer).permit(:name)

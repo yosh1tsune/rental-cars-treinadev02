@@ -1,5 +1,14 @@
 <h1>Registrar novo modelo</h1>
 
+<% if @car_model.errors.any? %>
+  <p>Você deve corrigir os seguintes erros: </p>
+  <ul>
+  <% @car_model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  <% end %>
+  </ul><br><br>
+<% end %>
+
 <%= form_for @car_model do |form| %>
     <p>
         <%= form.label :name, 'Nome' %>

@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'Admin edits subsidiary' do
     scenario 'successfully' do
-        Subsidiary.create(name: 'Osasco', cnpj: '11.222.333/4444-00', address: 'Avenida dos Autonomistas, 9999')        
-
+        Subsidiary.create(name: 'Osasco', cnpj: '11.222.333/4444-00', address: 'Avenida dos Autonomistas, 9999')
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+        
+        login_as(admin)
         visit root_path
         click_on 'Filiais'
         click_on 'Osasco'
@@ -22,7 +24,9 @@ feature 'Admin edits subsidiary' do
 
     scenario 'and must fill all fields' do
         Subsidiary.create(name: 'Osasco', cnpj: '11.222.333/4444-00', address: 'Avenida dos Autonomistas, 9999')
-
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+        
+        login_as(admin)
         visit subsidiaries_path
         click_on 'Osasco'
         click_on 'Editar'
@@ -38,7 +42,9 @@ feature 'Admin edits subsidiary' do
     scenario 'and must be unique' do
         Subsidiary.create(name: 'Osasco', cnpj: '11.222.333/4444-00', address: 'Avenida dos Autonomistas, 9999')
         Subsidiary.create(name: 'Carapicuiba', cnpj: '11.222.333/4444-99', address: 'Avenida dos Autonomistas, 2222')
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
         
+        login_as(admin)        
         visit subsidiaries_path
         click_on 'Carapicuiba'
         click_on 'Editar'

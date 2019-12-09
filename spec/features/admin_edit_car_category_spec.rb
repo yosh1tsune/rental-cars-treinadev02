@@ -3,7 +3,9 @@ require 'rails_helper'
 feature 'Admin edits car categories' do
   scenario 'successfully' do
     CarCategory.create(name: 'SUV', daily_rate: '120', car_insurance: '60', third_party_insurance: '50')
-
+    admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+    
+    login_as(admin)
     visit root_path
     click_on 'Categorias de veículos'
     click_on 'SUV'
@@ -23,7 +25,9 @@ feature 'Admin edits car categories' do
 
   scenario 'and must fill in all fields' do
     CarCategory.create(name: 'SUV', daily_rate: '120', car_insurance: '60', third_party_insurance: '50')
-
+    admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+    
+    login_as(admin)
     visit car_categories_path
     click_on 'SUV'
     click_on 'Editar'
@@ -39,7 +43,9 @@ feature 'Admin edits car categories' do
   scenario 'and must be unique' do
     CarCategory.create(name: 'SUV', daily_rate: '120', car_insurance: '60', third_party_insurance: '50')
     CarCategory.create(name: 'Sedan', daily_rate: '120', car_insurance: '60', third_party_insurance: '50')
-
+    admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+    
+    login_as(admin)
     visit car_categories_path
     click_on 'Sedan'
     click_on 'Editar'

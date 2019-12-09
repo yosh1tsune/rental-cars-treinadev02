@@ -1,0 +1,10 @@
+<h1><%= @car.car_model.name %> <span>Placa: </span><%= @car.license_plate %></h1>
+
+<dl>
+    <dt>Quilometragem:</dt>
+    <dd><%= @car.mileage %></dd>
+    <dt>Cor:</dt>
+    <dd><%= @car.color %></dd>
+    <dt>Filial:</dt>
+    <dd><%= @car.subsidiary.name %></dd>
+</dl>

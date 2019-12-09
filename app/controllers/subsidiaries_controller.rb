@@ -1,10 +1,13 @@
 class SubsidiariesController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
+    before_action :set_subsidiary, only: [:show, :edit, :update]
+
     def index
         @subsidiaries = Subsidiary.all
     end
 
     def show
-        @subsidiary = Subsidiary.find(params[:id])
     end
 
     def new
@@ -12,7 +15,6 @@ class SubsidiariesController < ApplicationController
     end
 
     def edit
-        @subsidiary = Subsidiary.find(params[:id])
     end
 
     def create
@@ -26,7 +28,6 @@ class SubsidiariesController < ApplicationController
     end
 
     def update
-        @subsidiary = Subsidiary.find(params[:id])
         if @subsidiary.update(subsidiaries_params)
             flash[:notice] = 'Filial atualizada com sucesso!'
             redirect_to @subsidiary
@@ -36,6 +37,17 @@ class SubsidiariesController < ApplicationController
     end
 
     private
+
+    def authorize_admin
+        unless current_user.admin?
+            flash[:notice] = 'Você não tem essa autorização'
+            redirect_to root_path
+        end
+    end
+
+    def set_subsidiary
+        @subsidiary = Subsidiary.find(params[:id])
+    end
 
     def subsidiaries_params
         params.require(:subsidiary).permit(:name, :cnpj, :address)

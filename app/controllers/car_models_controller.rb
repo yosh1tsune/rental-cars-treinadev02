@@ -1,4 +1,7 @@
 class CarModelsController < ApplicationController
+    before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+    before_action :authorize_admin, only: [:new, :create, :edit, :update, :destroy]
+
     def index
         @car_models = CarModel.all
     end
@@ -26,6 +29,13 @@ class CarModelsController < ApplicationController
     end
 
     private
+
+    def authorize_admin
+        unless current_user.admin?
+            flash[:notice] = 'Você não tem essa autorização'
+            redirect_to root_path
+        end
+    end
 
     def car_model_params
         params.require(:car_model).permit(:name, :year, :motorization, :fuel_type, :car_category_id, :manufacturer_id)

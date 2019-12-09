@@ -2,10 +2,12 @@ require 'rails_helper'
 
 feature 'Admin register subsidiary' do
     scenario 'successfully' do
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+        
+        login_as(admin)
         visit root_path
         click_on 'Filiais'
         click_on 'Registrar nova filial'
-
         fill_in 'Nome', with: 'Osasco'
         fill_in 'CNPJ', with: '11.222.333/4444-00'
         fill_in 'Endereço', with: 'Avenida dos Autonomistas, 9999'
@@ -17,9 +19,11 @@ feature 'Admin register subsidiary' do
     end
 
     scenario 'and must fill all fields' do
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
+        
+        login_as(admin)
         visit subsidiaries_path
         click_on 'Registrar nova filial'
-
         fill_in 'Nome', with: ''
         fill_in 'CNPJ', with: '11.222.333/4444-00'
         fill_in 'Endereço', with: 'Avenida dos Autonomistas, 9999'
@@ -30,10 +34,11 @@ feature 'Admin register subsidiary' do
 
     scenario 'and must be unique' do
         Subsidiary.create(name: 'Osasco', cnpj: '11.222.333/4444-00', address: 'Avenida dos Autonomistas, 9999')
+        admin = User.create(email: 'bruno@email.com', password: '12345678', role: 1)
         
+        login_as(admin)
         visit subsidiaries_path
         click_on 'Registrar nova filial'
-
         fill_in 'Nome', with: 'Osasco'
         fill_in 'CNPJ', with: '11.222.333/4444-00'
         fill_in 'Endereço', with: 'Avenida dos Autonomistas, 9999'
