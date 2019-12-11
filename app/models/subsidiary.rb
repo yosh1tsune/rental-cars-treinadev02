@@ -3,5 +3,5 @@ class Subsidiary < ApplicationRecord
     validates :name, uniqueness: { message: 'Nome já está em uso' }
     validates :cnpj, uniqueness: { message: 'CNPJ já cadastrado' }
 
-    has_many :car
+    # has_many :cars, dependent: :nullify
 end

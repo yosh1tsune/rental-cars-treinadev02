@@ -1,3 +1,5 @@
+<h1>Nova locação</h1>
+
 <%= form_with model: @rental, local: true do |form| %>
     <p>
         <%= form.label :start_date, 'Data de início' %>
@@ -9,7 +11,7 @@
     </p>
     <p>
         <%= form.label :client_id, 'Cliente' %>
-        <%= form.collection_select(:client_id, @clients, :id, :name) %>
+        <%= form.collection_select(:client_id, @clients, :id, :description) %>
     </p>
     <p>
         <%= form.label :car_category_id, 'Categoria' %>

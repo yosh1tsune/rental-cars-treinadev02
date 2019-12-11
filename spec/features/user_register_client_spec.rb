@@ -7,12 +7,12 @@ feature 'Admin register client' do
         click_on 'Registrar novo cliente'
 
         fill_in 'Nome', with: 'Bruno Silva'
-        fill_in 'CPF', with: '111.222.333-44'
+        fill_in 'CPF', with: '743.341.870-99'
         fill_in 'Email', with: 'bruno@email.com'
         click_on 'Enviar'
 
         expect(page).to have_content('Bruno Silva')
-        expect(page).to have_content('111.222.333-44')
+        expect(page).to have_content('743.341.870-99')
         expect(page).to have_content('bruno@email.com')
     end
 
@@ -21,7 +21,7 @@ feature 'Admin register client' do
         click_on 'Registrar novo cliente'
 
         fill_in 'Nome', with: ''
-        fill_in 'CPF', with: '111.222.333-44'
+        fill_in 'CPF', with: '743.341.870-99'
         fill_in 'Email', with: 'bruno@email.com'
         click_on 'Enviar'
 
@@ -29,13 +29,13 @@ feature 'Admin register client' do
     end
 
     scenario 'and must be unique' do
-        Client.create(name: 'Bruno Silva', cpf: '111.222.333-44', email: 'bruno@email.com')
+        Client.create(name: 'Bruno Silva', cpf: '743.341.870-99', email: 'bruno@email.com')
         
         visit clients_path
         click_on 'Registrar novo cliente'
 
         fill_in 'Nome', with: 'Bruno Reis'
-        fill_in 'CPF', with: '111.222.333-44'
+        fill_in 'CPF', with: '743.341.870-99'
         fill_in 'Email', with: 'bruno2@email.com'
         click_on 'Enviar'
 

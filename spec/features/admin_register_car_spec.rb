@@ -55,7 +55,7 @@ feature 'admin register car' do
         CarCategory.create(name: 'C', daily_rate: 300, car_insurance: 100, third_party_insurance: 80)
         CarModel.create(name: 'Skyline', year: 2002, motorization: 4.0, fuel_type: 'Gasoline', manufacturer_id: 1, car_category_id: 1)
         Subsidiary.create(name: 'Alphaville', cnpj: '11.222.333-444/55', address: 'Alameda Araguaia, 555')
-        Car.create(license_plate: 'ABC1234', mileage: 500, color: 'Preto', subsidiary_id: 1, car_model_id: 1)
+        Car.create!(license_plate: 'ABC1234', mileage: 500, color: 'Preto', subsidiary_id: 1, car_model_id: 1)
 
         login_as(admin)
         visit cars_path

@@ -2,11 +2,23 @@
 
 <dl>
     <dt>Data de início:</dt>
-    <dd><%= @rental.start_date %></dd>
+    <dd><%= @rental.start_date.strftime('%d/%m/%Y') %></dd>
     <dt>Data de término:</dt>
-    <dd><%= @rental.end_date %></dd>
+    <dd><%= @rental.end_date.strftime('%d/%m/%Y') %></dd>
     <dt>Cliente:</dt>
     <dd><%= @rental.client.name %></dd>
     <dt>Categoria:</dt>
     <dd><%= @rental.car_category.name %></dd>
 </dl>
+
+<h3>Cliente</h3>
+
+<% if @rental.scheduled? %>
+    <%= form_with model: @rental, url: start_rental_path, method: :post do |form| %>
+        <%= form.label :car_id, 'Carro' %>
+        <%= form.collection_select :car_id, @cars, :id, :description %>
+        <%= form.submit 'Iniciar Locação' %>
+    <% end %>
+<% elsif @rental.in_progress? %>
+    <%= @rental.car.description %>
+<% end %>

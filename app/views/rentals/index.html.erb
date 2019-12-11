@@ -1,3 +1,17 @@
 <h1>Locações</h1>
 
+<%= form_with url: search_rentals_path, local: true, method: 'get' do %>
+    <%= label_tag :q, 'Código' %>
+    <%= text_field_tag :q %>
+    <%= submit_tag 'Buscar' %>
+<% end %>
+
 <h3><%= link_to 'Nova locação', new_rental_path %></h3>
+
+<%= @rentals.each do |rental| %>
+    <%= rental.reservation_code %>
+    <%= rental.start_date %>
+    <%= rental.end_date %>
+    <%= rental.client.name %>
+    <%= rental.car_category.name %>
+<% end %>
