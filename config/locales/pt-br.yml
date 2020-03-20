@@ -1,0 +1,11 @@
+pt-BR:
+  welcome_message: 'Bem vindo ao sistema de gestão de locação!'
+  activerecord:
+    models:
+      rental: 
+        one: 'Locação'
+        other: 'Locações'
+    attributes:
+      rental:
+        start_date: 'Data de início'
+        end_date: 'Data de término'

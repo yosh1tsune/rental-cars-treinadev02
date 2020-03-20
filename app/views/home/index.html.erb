@@ -1,5 +1,9 @@
 <h1>Rental Cars</h1>
-<span>Bem vindo ao sistema de gestão de locação</span><br><br>
+<span>
+    <%#= I18n.translate('welcome_message') %>
+    <%#= I18n.t('welcome_message') %>
+    <%= t('welcome_message') %>
+</span><br><br>
 
 <%# <a href='<%= manufacturers_path '></a> %>
 <%= link_to 'Fabricantes', manufacturers_path%><br><br>

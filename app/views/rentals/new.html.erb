@@ -2,11 +2,11 @@
 
 <%= form_with model: @rental, local: true do |form| %>
     <p>
-        <%= form.label :start_date, 'Data de início' %>
+        <%= form.label :start_date %>
         <%= form.date_field :start_date %>
     </p>
     <p>
-        <%= form.label :end_date, 'Data de término' %>
+        <%= form.label :end_date %>
         <%= form.date_field :end_date %>
     </p>
     <p>
